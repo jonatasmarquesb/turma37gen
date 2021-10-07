@@ -24,9 +24,10 @@ import java.util.Scanner;
 
 
 
-public class primeiraFichaJava {
+public class exercicio1Ficha1 {
 	public static void main(String[] args) {
 		
+		@SuppressWarnings("resource")
 		Scanner leia = new Scanner(System.in);
 		
 		int anos, meses, dias;

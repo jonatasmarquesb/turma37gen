@@ -4,6 +4,7 @@ digitados.(DO...WHILE)*/
 import java.util.*;
 public class exercicio5Ficha3 {
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner leia = new Scanner(System.in);
 		
 		int num,totalNum=0;
