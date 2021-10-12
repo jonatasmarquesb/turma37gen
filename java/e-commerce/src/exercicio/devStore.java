@@ -52,32 +52,18 @@ public class devStore {
 		}
 		if (teste==nomeProduto.length) {
 			System.out.println("Produto não encontrado.");
-			try {
-				Thread.sleep(1500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		else {
-			System.out.println("Quantos você deseja comprar? ");
+			System.out.println("\nQuantos você deseja comprar? ");
 			auxQtde = leia.nextInt();
 				if (estoque[teste]==0) {
 					System.out.println("Produto indisponível");
-					try {
-						Thread.sleep(1500);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					
 					}
-				} else if (auxQtde>estoque[teste]) {
+				 else if (auxQtde>estoque[teste]) {
 					System.out.println("Quantidade indisponível");
-					try {
-						Thread.sleep(1500);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				
 				}  else {
 					totalPagar = auxQtde * valorProduto[teste];
 	                System.out.println("Total a pagar: R$ " + totalPagar);
@@ -92,7 +78,7 @@ public class devStore {
 	                	System.out.println("\n------------NOTA FISCAL-----------\n");
 	                	System.out.println("Produto escolhido: "+nomeProduto[teste]+"| Quantidade: "+auxQtde);
 	                	System.out.println("Total pago: R$"+totalPagar);
-	                	System.out.println("9% de impostos sobre o produto: R$ "+imposto);
+	                	System.out.println("9% de impostos sob o produto: R$ "+imposto);
 	                	System.out.println("\n Obrigado e volte sempre!!!");
 	                	try {
 							Thread.sleep(2000);
@@ -106,7 +92,7 @@ public class devStore {
 	                	System.out.println("\n------------NOTA FISCAL-----------\n");
 	                	System.out.println("Produto escolhido: "+nomeProduto[teste]+"| Quantidade: "+auxQtde);
 	                	System.out.println("Total pago: R$"+totalPagar);
-	                	System.out.println("9% de impostos sobre o produto: R$ "+imposto);
+	                	System.out.println("9% de impostos sob o produto: R$ "+imposto);
 	                	System.out.println("\n Obrigado e volte sempre!!!");
 	                	try {
 							Thread.sleep(2000);
@@ -122,7 +108,7 @@ public class devStore {
 	                	System.out.println("Produto escolhido: "+nomeProduto[teste]+"| Quantidade: "+auxQtde);
 	                	System.out.println("Total pago: R$"+totalPagar);
 	                	System.out.println("Valor das parcelas (Dividido em duas vezes): R$"+parcelas);
-	                	System.out.println("9% de impostos sobre o produto: R$ "+imposto);
+	                	System.out.println("9% de impostos sob o produto: R$ "+imposto);
 	                	System.out.println("\n Obrigado e volte sempre!!!");
 	                	new Thread();
 	                	try {
