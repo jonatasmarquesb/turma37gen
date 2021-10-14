@@ -16,20 +16,27 @@ public class contaEspecial extends Conta {
 	que o saldo, o mecanismo do limite especial é ativado, subtraindo assim o restante desse limite*/
     @Override
 	public double debito(double valorDebito) {
-		if (valorDebito <= this.saldo && valorDebito<limite)  
+    	
+		if (valorDebito <= this.saldo )  
 		{
 			this.saldo = this.saldo - valorDebito;
-			System.out.println("Limite Especial não utilizado.");
+			System.out.println("Seu saldo é de: R$"+this.saldo+". Limite especial não utilizado.");
 		} 
-		else if (valorDebito>saldo)
+		else if (valorDebito>this.saldo && valorDebito<limite)
 		{
 			
-			limite=(limite-saldo)-valorDebito;
-			saldo=0;
-			System.out.println("Seu saldo é de: R$"+saldo+". Seu limite é de: R$"+limite);
+			limite=(this.saldo+limite)-valorDebito;
+			this.saldo=0;
+		
+			System.out.println("Seu saldo é de: R$"+this.saldo+". Seu limite especial é de: R$"+limite);
 			
 		}
-		return this.saldo;
+		else if (valorDebito>limite && valorDebito>this.saldo) {
+			System.out.println("----------------------------");
+			System.out.println("Limite e saldo indisponível.");
+			System.out.println("----------------------------");
+		}
+		return limite;
     	}
 		
 		

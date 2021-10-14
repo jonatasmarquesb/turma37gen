@@ -3,7 +3,7 @@ package entities;
 public abstract class Conta {
     private int numero;
     private String cpf;
-    protected double saldo;
+    protected double saldo=300.0;
     private boolean ativo;
 
     public Conta(int numero, String cpf) {
@@ -45,15 +45,16 @@ public abstract class Conta {
 		{
 			this.saldo = this.saldo - valorDebito;
 		} 
-		else
+		else if (valorDebito>this.saldo)
 		{
 			System.out.println("SALDO INDISPONIVEL");
 		}
 		return this.saldo;
     	}
-	public void credito(double valorCredito)
+	public double credito(double valorCredito)
 	{
 		this.saldo = this.saldo + valorCredito;
+		return this.saldo;
 	}
 		
 
