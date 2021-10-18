@@ -1,25 +1,24 @@
-package br.com.ecommerce;
-
-import br.com.ecommerce.classes.Produto;
-import br.com.ecommerce.utilidades.MetodosUteis;
-
+package app;
+import entities.Produto;
+import entities.MetodosUteis;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
+public class TesteLista {
 
-public class Main {
 
-    public static void main(String[] args)  {
-    	
-    	
+	public static void main(String[] args) {
+
+		
 		double imposto=0.0;
 		int opcaoPag=0;
 		double parcelas=0.0;
 		int quantidadeSelecionada=0;
 
-        MetodosUteis objMetodosUteis = new MetodosUteis(); //Cria uma inst√¢ncia da classe m√©todos uteis para usar v√°rios m√©todos que ajudar√° no trabalho
-        Scanner leitor = new Scanner(System.in); //Cria o Scanner para realizar intera√ß√£o com o usu√°rio durante a compra
+        MetodosUteis objMetodosUteis = new MetodosUteis(); //Cria uma instancia da classe metodos uteis para usar varios metodos que ajudar„o no trabalho
+        @SuppressWarnings("resource")
+		Scanner leitor = new Scanner(System.in); //Cria o Scanner para realizar interaÁ„o com o usuario durante a compra
 
         //Chama o m√©todo pegarListaProdutos para preencher nossa lista de produtos do ecommerce
         ArrayList<Produto> listaProdutos = objMetodosUteis.pegarListaProdutos();
@@ -27,21 +26,21 @@ public class Main {
         //Cria a lista do carrinho de compras vazia para ir adicionando os produtos a medida que for comprando
         ArrayList<Produto> listaCarrinhoComrpas = new ArrayList<>();
 
-        //Controla se o la√ßo de repedit√ß√£o deve ou n√£o continuar com a compra
+        //Controla se o laÁo de repeditiÁ„o deve ou n„o continuar com a compra
         int continuarCompras = 1;
 
-        //Repete o processo de compra enquanto o usu√°rio desejar continuar a compra
+        //Repete o processo de compra enquanto o usuario desejar continuar a compra
         do{
 
             objMetodosUteis.imprimirTabelaDeProdutos(listaProdutos);
 
-            System.out.print("\nDigite o c√≥digo do produto que voc√™ deseja comprar: ");
+            System.out.print("\nDigite o cÛdigo do produto que vocÍ deseja comprar: ");
             String codigoProdutoSelecionado = leitor.next().toUpperCase();
 
             //Faz a busca do produto usando o metodo buscaProdutoPorCodigo
             Produto produtoSelecionado = objMetodosUteis.buscaProdutoPorCodigo(codigoProdutoSelecionado, listaProdutos);
 
-            //Se o valor do produtoSelecionado retornado da busca for NULL, ele exibe a mensagem dizendo que o produto n√£o foi encontrado se for um produto v√°lido faz o processo de compra no carrinho
+            //Se o valor do produtoSelecionado retornado da busca for NULL, ele exibe a mensagem dizendo que o produto n„ofoi encontrado se for um produto valido faz o processo de compra no carrinho
             if(produtoSelecionado != null){
 
                 System.out.printf("\nProduto selecionado foi:\n %s \n", produtoSelecionado.toString());
@@ -65,21 +64,19 @@ public class Main {
                     System.out.printf("\nProduto %s foi adicionado ao carrinho de compras!", produtoSelecionado.getNome());
 
                 }else {
-                    System.out.printf("\nA quantidade informada √© invalida, voc√™ deseja %d, mas nosso estoque cont√©m apenas: %d para o produto %s",
+                    System.out.printf("\nA quantidade informada È invalida, vocÍ deseja %d, mas nosso estoque contÈm apenas: %d para o produto %s",
                             quantidadeSelecionada,
                             produtoSelecionado.getQuantidade(),
                             produtoSelecionado.getNome());
                 }
 
             }else {
-                System.out.printf("\nNenhum produto foi encontrado com o c√≥digo = %s", codigoProdutoSelecionado);
+                System.out.printf("\nNenhum produto foi encontrado com o cÛdigo = %s", codigoProdutoSelecionado);
             }
 
-            //Pergunta se deseja continuar comprando ou n√£o
+            //Pergunta se deseja continuar comprando ou n„o
             System.out.println("\nDeseja continuar comprando? [1 = SIM / 2 = NAO]");
             continuarCompras = leitor .nextInt();
-           
-
 
         }while(continuarCompras == 1);
 
@@ -92,18 +89,18 @@ public class Main {
 
         double valorTotal = objMetodosUteis.calcularValorTotalCompra(listaCarrinhoComrpas);
         valorTotal = valorTotal*quantidadeSelecionada;
-        System.out.printf("\nO valor total da compra √© de: R$ %.2f", valorTotal);
+        System.out.printf("\nO valor total da compra foi de: R$ %.2f", valorTotal);
         imposto = valorTotal * 0.09;
-        
-        
-        
+
+
+
         System.out.println("\nDIGITE SUA OP«√O DE PAGAMENTO:\n");
         System.out.println("1- A VISTA (10% DESCONTO) | 2 - CART√O (10% ACR…SCIMO) | 3 - DUAS VEZES NO CART√O (15% ACR…SCIMO)");
         opcaoPag = leitor.nextInt();
         if (opcaoPag==1) {
         	valorTotal= valorTotal - (valorTotal*0.1);
         	System.out.println("\n------------NOTA FISCAL-----------\n");
-        	
+
         	System.out.println("Total pago: R$"+valorTotal);
         	System.out.println("9% de impostos sob o produto: R$ "+imposto);
         	System.out.println("\n Obrigado e volte sempre!!!");
@@ -117,7 +114,7 @@ public class Main {
         else if (opcaoPag==2) {
         	valorTotal= valorTotal + (valorTotal*0.1);
         	System.out.println("\n------------NOTA FISCAL-----------\n");
-        	
+
         	System.out.println("Total pago: R$"+valorTotal);
         	System.out.println("9% de impostos sob o produto: R$ "+imposto);
         	System.out.println("\n Obrigado e volte sempre!!!");
@@ -132,7 +129,7 @@ public class Main {
         	valorTotal =valorTotal + (valorTotal*0.15);
         	parcelas = valorTotal/2;
         	System.out.println("\n------------NOTA FISCAL-----------\n");
-        	
+
         	System.out.println("Total pago: R$"+valorTotal);
         	System.out.println("Valor das parcelas (Dividido em duas vezes): R$"+parcelas);
         	System.out.println("9% de impostos sob o produto: R$ "+imposto);
@@ -146,6 +143,6 @@ public class Main {
 			}
         }
 
-    }
+	}
 
-}
+	}
